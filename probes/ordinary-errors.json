@@ -1,0 +1,385 @@
+{
+  "observed_date": "2026-10-22 America/Los_Angeles",
+  "mode": "check",
+  "problem": "muse_bf16_proj",
+  "scope": "Three ordinary unranked failing submissions: empty tensor, nonempty wrong shape, and an explicit RuntimeError. No introspection, memory access, process manipulation, or bypass techniques.",
+  "submissions": [
+    {
+      "source": "probes/wrong-shape/submission.py",
+      "source_sha256": "16385aa14692169d0c0fbbfd4918d4d3c6a024426ce5c774b7d671266af92580",
+      "job_id": "ed1ce7f62ade4921",
+      "status": "done",
+      "created_at": 1792719415.4574537,
+      "finished_at": 1792719522.9466128,
+      "result": {
+        "passed": false,
+        "status": "ok",
+        "error": "empty output",
+        "returncode": 112,
+        "checks": {
+          "ok": true,
+          "flagged": [],
+          "rejected": []
+        },
+        "flags": [],
+        "records": [
+          {
+            "error": null,
+            "event": "setup",
+            "first": "baseline",
+            "copies": 16,
+            "status": "pass",
+            "prepare_s": 9.142e-06,
+            "prepare_pad": 27387904,
+            "baseline_copies": 16,
+            "baseline_prepare_pad": 10696192
+          },
+          {
+            "error": "empty output",
+            "event": "error"
+          }
+        ],
+        "log_tail": "",
+        "evaluator": {
+          "files": {
+            "harness/eval.py": "0051a1bfac67a9f1fad06086b306653c6643b2bb253e15a794aa672312f070a9",
+            "harness/runner.py": "c905e5c80264c6d27620b6fc7d55b162dccdb8ed7282f8a513a4d2e6f2f226f2",
+            "harness/worker.py": "950437610f57ddffbc1176b65d9c2ae909c47bf67b1e3fe0716a81946986f568",
+            "challenge/nvfp4.py": "cfdf37c7bc14b10f7353aba7d4632f4767401b92b4b073941a8030d9a961aaaf",
+            "challenge/checks.py": "9a046c3c38db28b325dcd1557baecdf6bc9ef941d2175f9a900ba4c230bb8055",
+            "harness/static_checks.py": "c5588b69e9e86229459a525c61b30096f6f13ff2add6cadf98f272c4ac8ca0c2",
+            "configs/muse-spark-open.yaml": "98f07230e4e64fe91b7c76d9a3ce04948053c043d494d5f1fae56cfe2de033af",
+            "problems/muse_bf16_proj/task.yml": "18e9da6357144b0a1348434a18bd2d1938b1948d9f2130876f6b6706588470c9",
+            "problems/muse_bf16_proj/baseline.py": "39f52ea5b65505958aa9dee9c8129dd394cbba4e670046f862b5a88ce91a0574",
+            "problems/muse_bf16_proj/reference.py": "e62491abc9ddcad33f5faba8b0ee74cf6370b7be5dd2dc05031742f3ebf7147d"
+          },
+          "image": "localhost:30500/kc/judge@sha256:9a7f287b80d772c6f636bbcb57422c619fe326e2aabc53803b85007bca93f68e",
+          "code_sha256": "986ed3ebb096eab83d16797609f4c0e7895248d6bce33252d25dd306cbe5d018"
+        }
+      }
+    },
+    {
+      "source": "probes/nonempty-wrong-shape/submission.py",
+      "source_sha256": "34726991fbe1dc42e4e5d3bad06c076571edc3a9c8715cc5fcca1df208afd720",
+      "job_id": "c31d4d0265774782",
+      "status": "done",
+      "created_at": 1792719564.7016463,
+      "finished_at": 1792719681.3957562,
+      "result": {
+        "passed": false,
+        "status": "ok",
+        "error": null,
+        "returncode": 112,
+        "checks": {
+          "ok": true,
+          "flagged": [],
+          "rejected": []
+        },
+        "flags": [],
+        "records": [
+          {
+            "error": null,
+            "event": "setup",
+            "first": "baseline",
+            "copies": 16,
+            "status": "pass",
+            "prepare_s": 9.296e-06,
+            "prepare_pad": 12691968,
+            "baseline_copies": 16,
+            "baseline_prepare_pad": 26190848
+          },
+          {
+            "case": {
+              "m": 1,
+              "seed": 3732908475189724949,
+              "layer": "qkv_gate"
+            },
+            "event": "test",
+            "index": 0,
+            "status": "fail",
+            "message": "expected (1, 2304) torch.bfloat16, got (1, 1) torch.bfloat16"
+          },
+          {
+            "case": {
+              "m": 7,
+              "seed": 3733068389395336367,
+              "layer": "pooler"
+            },
+            "event": "test",
+            "index": 1,
+            "status": "fail",
+            "message": "expected (7, 4096) torch.bfloat16, got (7, 1) torch.bfloat16"
+          },
+          {
+            "case": {
+              "m": 33,
+              "seed": 3733228303600947786,
+              "layer": "o"
+            },
+            "event": "test",
+            "index": 2,
+            "status": "fail",
+            "message": "expected (33, 8192) torch.bfloat16, got (33, 1) torch.bfloat16"
+          },
+          {
+            "case": {
+              "m": 130,
+              "seed": 3733388217806559206,
+              "layer": "unpooler"
+            },
+            "event": "test",
+            "index": 3,
+            "status": "fail",
+            "message": "expected (130, 8192) torch.bfloat16, got (130, 1) torch.bfloat16"
+          },
+          {
+            "case": {
+              "m": 5,
+              "seed": 3734187788834616321,
+              "layer": "unpooler"
+            },
+            "event": "test",
+            "index": 4,
+            "status": "fail",
+            "message": "expected (5, 1024) torch.bfloat16, got (5, 1) torch.bfloat16"
+          },
+          {
+            "case": {
+              "m": 8,
+              "seed": 3733548132012170627,
+              "layer": "router"
+            },
+            "event": "test",
+            "index": 5,
+            "status": "fail",
+            "message": "expected (8, 256) torch.float32, got (8, 1) torch.bfloat16"
+          },
+          {
+            "case": {
+              "m": 9,
+              "dist": "outliers",
+              "seed": 3733708046217782049,
+              "layer": "router"
+            },
+            "event": "test",
+            "index": 6,
+            "status": "fail",
+            "message": "expected (9, 256) torch.float32, got (9, 1) torch.bfloat16"
+          },
+          {
+            "case": {
+              "m": 512,
+              "dist": "outliers",
+              "seed": 3733867960423393472,
+              "layer": "qkv_gate"
+            },
+            "event": "test",
+            "index": 7,
+            "status": "fail",
+            "message": "expected (512, 2304) torch.bfloat16, got (512, 1) torch.bfloat16"
+          },
+          {
+            "case": {
+              "m": 1000,
+              "dist": "outliers",
+              "seed": 3734027874629004896,
+              "layer": "unpooler"
+            },
+            "event": "test",
+            "index": 8,
+            "status": "fail",
+            "message": "expected (1000, 8192) torch.bfloat16, got (1000, 1) torch.bfloat16"
+          }
+        ],
+        "log_tail": "",
+        "evaluator": {
+          "files": {
+            "harness/eval.py": "0051a1bfac67a9f1fad06086b306653c6643b2bb253e15a794aa672312f070a9",
+            "harness/runner.py": "c905e5c80264c6d27620b6fc7d55b162dccdb8ed7282f8a513a4d2e6f2f226f2",
+            "harness/worker.py": "950437610f57ddffbc1176b65d9c2ae909c47bf67b1e3fe0716a81946986f568",
+            "challenge/nvfp4.py": "cfdf37c7bc14b10f7353aba7d4632f4767401b92b4b073941a8030d9a961aaaf",
+            "challenge/checks.py": "9a046c3c38db28b325dcd1557baecdf6bc9ef941d2175f9a900ba4c230bb8055",
+            "harness/static_checks.py": "c5588b69e9e86229459a525c61b30096f6f13ff2add6cadf98f272c4ac8ca0c2",
+            "configs/muse-spark-open.yaml": "98f07230e4e64fe91b7c76d9a3ce04948053c043d494d5f1fae56cfe2de033af",
+            "problems/muse_bf16_proj/task.yml": "18e9da6357144b0a1348434a18bd2d1938b1948d9f2130876f6b6706588470c9",
+            "problems/muse_bf16_proj/baseline.py": "39f52ea5b65505958aa9dee9c8129dd394cbba4e670046f862b5a88ce91a0574",
+            "problems/muse_bf16_proj/reference.py": "e62491abc9ddcad33f5faba8b0ee74cf6370b7be5dd2dc05031742f3ebf7147d"
+          },
+          "image": "localhost:30500/kc/judge@sha256:9a7f287b80d772c6f636bbcb57422c619fe326e2aabc53803b85007bca93f68e",
+          "code_sha256": "986ed3ebb096eab83d16797609f4c0e7895248d6bce33252d25dd306cbe5d018"
+        }
+      }
+    },
+    {
+      "source": "probes/runtime-error/submission.py",
+      "source_sha256": "7b46c08299cbbce82632c80a89f79a7c8dd56a4fbd23531e174ab47ee8b2d292",
+      "job_id": "4f5be1e3de12456c",
+      "status": "done",
+      "created_at": 1792719423.8615055,
+      "finished_at": 1792719621.0895782,
+      "result": {
+        "passed": false,
+        "status": "ok",
+        "error": null,
+        "returncode": 112,
+        "checks": {
+          "ok": true,
+          "flagged": [],
+          "rejected": []
+        },
+        "flags": [],
+        "records": [
+          {
+            "error": null,
+            "event": "setup",
+            "first": "submission",
+            "copies": 16,
+            "status": "pass",
+            "prepare_s": 9.042e-06,
+            "prepare_pad": 25423872,
+            "baseline_copies": 16,
+            "baseline_prepare_pad": 21996032
+          },
+          {
+            "case": {
+              "m": 1,
+              "seed": 1545693845799750205,
+              "layer": "qkv_gate"
+            },
+            "event": "test",
+            "index": 0,
+            "status": "fail",
+            "message": "RuntimeError: OKC_AUDIT_DIAGNOSTIC: intentional unranked error-format check"
+          },
+          {
+            "case": {
+              "m": 7,
+              "seed": 1545723121037286138,
+              "layer": "pooler"
+            },
+            "event": "test",
+            "index": 1,
+            "status": "fail",
+            "message": "RuntimeError: OKC_AUDIT_DIAGNOSTIC: intentional unranked error-format check"
+          },
+          {
+            "case": {
+              "m": 33,
+              "seed": 1545752396274822072,
+              "layer": "o"
+            },
+            "event": "test",
+            "index": 2,
+            "status": "fail",
+            "message": "RuntimeError: OKC_AUDIT_DIAGNOSTIC: intentional unranked error-format check"
+          },
+          {
+            "case": {
+              "m": 130,
+              "seed": 1545781671512358007,
+              "layer": "unpooler"
+            },
+            "event": "test",
+            "index": 3,
+            "status": "fail",
+            "message": "RuntimeError: OKC_AUDIT_DIAGNOSTIC: intentional unranked error-format check"
+          },
+          {
+            "case": {
+              "m": 5,
+              "seed": 1545928047700037697,
+              "layer": "unpooler"
+            },
+            "event": "test",
+            "index": 4,
+            "status": "fail",
+            "message": "RuntimeError: OKC_AUDIT_DIAGNOSTIC: intentional unranked error-format check"
+          },
+          {
+            "case": {
+              "m": 8,
+              "seed": 1545810946749893943,
+              "layer": "router"
+            },
+            "event": "test",
+            "index": 5,
+            "status": "fail",
+            "message": "RuntimeError: OKC_AUDIT_DIAGNOSTIC: intentional unranked error-format check"
+          },
+          {
+            "case": {
+              "m": 9,
+              "dist": "outliers",
+              "seed": 1545840221987429880,
+              "layer": "router"
+            },
+            "event": "test",
+            "index": 6,
+            "status": "fail",
+            "message": "RuntimeError: OKC_AUDIT_DIAGNOSTIC: intentional unranked error-format check"
+          },
+          {
+            "case": {
+              "m": 512,
+              "dist": "outliers",
+              "seed": 1545869497224965818,
+              "layer": "qkv_gate"
+            },
+            "event": "test",
+            "index": 7,
+            "status": "fail",
+            "message": "RuntimeError: OKC_AUDIT_DIAGNOSTIC: intentional unranked error-format check"
+          },
+          {
+            "case": {
+              "m": 1000,
+              "dist": "outliers",
+              "seed": 1545898772462501757,
+              "layer": "unpooler"
+            },
+            "event": "test",
+            "index": 8,
+            "status": "fail",
+            "message": "RuntimeError: OKC_AUDIT_DIAGNOSTIC: intentional unranked error-format check"
+          }
+        ],
+        "log_tail": "Traceback (most recent call last):\n  File \"/tmp/muse_bf16_proj-djc2k83n/run/worker.py\", line 484, in child_main\n    out = kernel()(state.get(\"data\"))\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/tmp/muse_bf16_proj-djc2k83n/run/worker.py\", line 415, in <lambda>\n    return functools.partial(lambda k, p, d: k(d, p), fn, state[\"prep\"])\n                                             ^^^^^^^\n  File \"/tmp/muse_bf16_proj-djc2k83n/run/submission.py\", line 37, in kernel_fn\n    raise RuntimeError(\"OKC_AUDIT_DIAGNOSTIC: intentional unranked error-format check\")\nRuntimeError: OKC_AUDIT_DIAGNOSTIC: intentional unranked error-format check\nTraceback (most recent call last):\n  File \"/tmp/muse_bf16_proj-djc2k83n/run/worker.py\", line 484, in child_main\n    out = kernel()(state.get(\"data\"))\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/tmp/muse_bf16_proj-djc2k83n/run/worker.py\", line 415, in <lambda>\n    return functools.partial(lambda k, p, d: k(d, p), fn, state[\"prep\"])\n                                             ^^^^^^^\n  File \"/tmp/muse_bf16_proj-djc2k83n/run/submission.py\", line 37, in kernel_fn\n    raise RuntimeError(\"OKC_AUDIT_DIAGNOSTIC: intentional unranked error-format check\")\nRuntimeError: OKC_AUDIT_DIAGNOSTIC: intentional unranked error-format check\nTraceback (most recent call last):\n  File \"/tmp/muse_bf16_proj-djc2k83n/run/worker.py\", line 484, in child_main\n    out = kernel()(state.get(\"data\"))\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/tmp/muse_bf16_proj-djc2k83n/run/worker.py\", line 415, in <lambda>\n    return functools.partial(lambda k, p, d: k(d, p), fn, state[\"prep\"])\n                                             ^^^^^^^\n  File \"/tmp/muse_bf16_proj-djc2k83n/run/submission.py\", line 37, in kernel_fn\n    raise RuntimeError(\"OKC_AUDIT_DIAGNOSTIC: intentional unranked error-format check\")\nRuntimeError: OKC_AUDIT_DIAGNOSTIC: intentional unranked error-format check\nTraceback (most recent call last):\n  File \"/tmp/muse_bf16_proj-djc2k83n/run/worker.py\", line 484, in child_main\n    out = kernel()(state.get(\"data\"))\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/tmp/muse_bf16_proj-djc2k83n/run/worker.py\", line 415, in <lambda>\n    return functools.partial(lambda k, p, d: k(d, p), fn, state[\"prep\"])\n                                             ^^^^^^^\n  File \"/tmp/muse_bf16_proj-djc2k83n/run/submission.py\", line 37, in kernel_fn\n    raise RuntimeError(\"OKC_AUDIT_DIAGNOSTIC: intentional unranked error-format check\")\nRuntimeError: OKC_AUDIT_DIAGNOSTIC: intentional unranked error-format check\nTraceback (most recent call last):\n  File \"/tmp/muse_bf16_proj-djc2k83n/run/worker.py\", line 484, in child_main\n    out = kernel()(state.get(\"data\"))\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/tmp/muse_bf16_proj-djc2k83n/run/worker.py\", line 415, in <lambda>\n    return functools.partial(lambda k, p, d: k(d, p), fn, state[\"prep\"])\n                                             ^^^^^^^\n  File \"/tmp/muse_bf16_proj-djc2k83n/run/submission.py\", line 37, in kernel_fn\n    raise RuntimeError(\"OKC_AUDIT_DIAGNOSTIC: intentional unranked error-format check\")\nRuntimeError: OKC_AUDIT_DIAGNOSTIC: intentional unranked error-format check\nTraceback (most recent call last):\n  File \"/tmp/muse_bf16_proj-djc2k83n/run/worker.py\", line 484, in child_main\n    out = kernel()(state.get(\"data\"))\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/tmp/muse_bf16_proj-djc2k83n/run/worker.py\", line 415, in <lambda>\n    return functools.partial(lambda k, p, d: k(d, p), fn, state[\"prep\"])\n                                             ^^^^^^^\n  File \"/tmp/muse_bf16_proj-djc2k83n/run/submission.py\", line 37, in kernel_fn\n    raise RuntimeError(\"OKC_AUDIT_DIAGNOSTIC: intentional unranked error-format check\")\nRuntimeError: OKC_AUDIT_DIAGNOSTIC: intentional unranked error-format check\nTraceback (most recent call last):\n  File \"/tmp/muse_bf16_proj-djc2k83n/run/worker.py\", line 484, in child_main\n    out = kernel()(state.get(\"data\"))\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/tmp/muse_bf16_proj-djc2k83n/run/worker.py\", line 415, in <lambda>\n    return functools.partial(lambda k, p, d: k(d, p), fn, state[\"prep\"])\n                                             ^^^^^^^\n  File \"/tmp/muse_bf16_proj-djc2k83n/run/submission.py\", line 37, in kernel_fn\n    raise RuntimeError(\"OKC_AUDIT_DIAGNOSTIC: intentional unranked error-format check\")\nRuntimeError: OKC_AUDIT_DIAGNOSTIC: intentional unranked error-format check\nTraceback (most recent call last):\n  File \"/tmp/muse_bf16_proj-djc2k83n/run/worker.py\", line 484, in child_main\n    out = kernel()(state.get(\"data\"))\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/tmp/muse_bf16_proj-djc2k83n/run/worker.py\", line 415, in <lambda>\n    return functools.partial(lambda k, p, d: k(d, p), fn, state[\"prep\"])\n                                             ^^^^^^^\n  File \"/tmp/muse_bf16_proj-djc2k83n/run/submission.py\", line 37, in kernel_fn\n    raise RuntimeError(\"OKC_AUDIT_DIAGNOSTIC: intentional unranked error-format check\")\nRuntimeError: OKC_AUDIT_DIAGNOSTIC: intentional unranked error-format check\nTraceback (most recent call last):\n  File \"/tmp/muse_bf16_proj-djc2k83n/run/worker.py\", line 484, in child_main\n    out = kernel()(state.get(\"data\"))\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/tmp/muse_bf16_proj-djc2k83n/run/worker.py\", line 415, in <lambda>\n    return functools.partial(lambda k, p, d: k(d, p), fn, state[\"prep\"])\n                                             ^^^^^^^\n  File \"/tmp/muse_bf16_proj-djc2k83n/run/submission.py\", line 37, in kernel_fn\n    raise RuntimeError(\"OKC_AUDIT_DIAGNOSTIC: intentional unranked error-format check\")\nRuntimeError: OKC_AUDIT_DIAGNOSTIC: intentional unranked error-format check\n",
+        "evaluator": {
+          "files": {
+            "harness/eval.py": "0051a1bfac67a9f1fad06086b306653c6643b2bb253e15a794aa672312f070a9",
+            "harness/runner.py": "c905e5c80264c6d27620b6fc7d55b162dccdb8ed7282f8a513a4d2e6f2f226f2",
+            "harness/worker.py": "950437610f57ddffbc1176b65d9c2ae909c47bf67b1e3fe0716a81946986f568",
+            "challenge/nvfp4.py": "cfdf37c7bc14b10f7353aba7d4632f4767401b92b4b073941a8030d9a961aaaf",
+            "challenge/checks.py": "9a046c3c38db28b325dcd1557baecdf6bc9ef941d2175f9a900ba4c230bb8055",
+            "harness/static_checks.py": "c5588b69e9e86229459a525c61b30096f6f13ff2add6cadf98f272c4ac8ca0c2",
+            "configs/muse-spark-open.yaml": "98f07230e4e64fe91b7c76d9a3ce04948053c043d494d5f1fae56cfe2de033af",
+            "problems/muse_bf16_proj/task.yml": "18e9da6357144b0a1348434a18bd2d1938b1948d9f2130876f6b6706588470c9",
+            "problems/muse_bf16_proj/baseline.py": "39f52ea5b65505958aa9dee9c8129dd394cbba4e670046f862b5a88ce91a0574",
+            "problems/muse_bf16_proj/reference.py": "e62491abc9ddcad33f5faba8b0ee74cf6370b7be5dd2dc05031742f3ebf7147d"
+          },
+          "image": "localhost:30500/kc/judge@sha256:9a7f287b80d772c6f636bbcb57422c619fe326e2aabc53803b85007bca93f68e",
+          "code_sha256": "986ed3ebb096eab83d16797609f4c0e7895248d6bce33252d25dd306cbe5d018"
+        }
+      }
+    }
+  ],
+  "comparisons": {
+    "exit_code": {
+      "okc": 112,
+      "kernelbot": "VALIDATE_FAIL = 112",
+      "source": "https://github.com/gpu-mode/kernelbot/blob/ec4669669d368c395675565831f98b509db2b0b3/src/libkernelbot/consts.py#L76",
+      "reference_source": "https://github.com/gpu-mode/reference-kernels/blob/f3295bb6bd559bae4659d2d8fc45edb1394251b1/problems/nvidia/eval.py#L199"
+    },
+    "normal_traceback": {
+      "observed": "worker.py:484 child_main calls kernel()(state.get(\"data\")); worker.py:415 adapts kernel_fn(data, prepared_state) with functools.partial.",
+      "exact_expression_search": "Neither exposed expression was found in the pinned KernelBot, reference-kernels, pygpubench, or Popcorn Python sources.",
+      "limit": "Only the normal API-provided traceback is available; this is not a complete harness-source comparison."
+    },
+    "shape_validation": {
+      "empty_tensor": "Returns empty output before emitting per-case test records.",
+      "nonempty_wrong_shape": "Emits nine failed test records using the message format in the public checks.py.",
+      "public_source": "https://openkernelchallenge.dev/api/v1/problems/muse_bf16_proj"
+    },
+    "runtime_error": "Emits nine failed test records, preserves the exception class/message, and includes standard Python tracebacks in log_tail."
+  }
+}

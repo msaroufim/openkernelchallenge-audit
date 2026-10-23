@@ -1,0 +1,17 @@
+{
+  "observed_date": "2026-10-22 America/Los_Angeles",
+  "source": "submission.py",
+  "source_sha256": "a5b494cdbd6ed0513b6685822e0c36c20b43f8eca07ae542717b20a35f94d0c0",
+  "endpoint": "https://openkernelchallenge.dev/api/v1/problems/muse_bf16_proj/submissions",
+  "mode": "check",
+  "http_status": 422,
+  "response": {
+    "detail": {
+      "rejected": [
+        "reads harness frames"
+      ]
+    }
+  },
+  "outcome": "Rejected before execution; no Python stack or parent-process metadata obtained.",
+  "scope": "Attempted bounded names and PID metadata only; no private source, memory, environment variables or filesystem contents requested."
+}

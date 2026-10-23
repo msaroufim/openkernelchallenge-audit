@@ -1,0 +1,311 @@
+{
+  "tested_at_utc": "2026-10-23T01:25:00.812866+00:00",
+  "endpoint": "https://openkernelchallenge.dev/api/v1/problems/muse_bf16_proj/submissions",
+  "mode": "check",
+  "method": "Official PyTorch starter versus the same file with only a trailing # stream comment; Python ASTs are identical.",
+  "scope": "Tests literal source-keyword rejection, not runtime CUDA-stream enforcement.",
+  "submissions": [
+    {
+      "source": "probes/control/submission.py",
+      "source_sha256": "964eed6cfef28ad2dc28ca05487a0bf28f7183ba12470eb82acc152cc5a25154",
+      "submission_response": {
+        "job_id": "a3a182d805244352",
+        "flags": []
+      },
+      "job_id": "a3a182d805244352",
+      "status": "done",
+      "created_at": 1792718450.1068769,
+      "finished_at": 1792718583.8268776,
+      "result": {
+        "gpu": "H200",
+        "passed": true,
+        "status": "ok",
+        "checks": {
+          "ok": true,
+          "flagged": [],
+          "rejected": []
+        },
+        "flags": [],
+        "error": null,
+        "returncode": 0,
+        "evaluator": {
+          "files": {
+            "harness/eval.py": "0051a1bfac67a9f1fad06086b306653c6643b2bb253e15a794aa672312f070a9",
+            "harness/runner.py": "c905e5c80264c6d27620b6fc7d55b162dccdb8ed7282f8a513a4d2e6f2f226f2",
+            "harness/worker.py": "950437610f57ddffbc1176b65d9c2ae909c47bf67b1e3fe0716a81946986f568",
+            "challenge/nvfp4.py": "cfdf37c7bc14b10f7353aba7d4632f4767401b92b4b073941a8030d9a961aaaf",
+            "challenge/checks.py": "9a046c3c38db28b325dcd1557baecdf6bc9ef941d2175f9a900ba4c230bb8055",
+            "harness/static_checks.py": "c5588b69e9e86229459a525c61b30096f6f13ff2add6cadf98f272c4ac8ca0c2",
+            "configs/muse-spark-open.yaml": "98f07230e4e64fe91b7c76d9a3ce04948053c043d494d5f1fae56cfe2de033af",
+            "problems/muse_bf16_proj/task.yml": "18e9da6357144b0a1348434a18bd2d1938b1948d9f2130876f6b6706588470c9",
+            "problems/muse_bf16_proj/baseline.py": "39f52ea5b65505958aa9dee9c8129dd394cbba4e670046f862b5a88ce91a0574",
+            "problems/muse_bf16_proj/reference.py": "e62491abc9ddcad33f5faba8b0ee74cf6370b7be5dd2dc05031742f3ebf7147d"
+          },
+          "image": "localhost:30500/kc/judge@sha256:9a7f287b80d772c6f636bbcb57422c619fe326e2aabc53803b85007bca93f68e",
+          "code_sha256": "986ed3ebb096eab83d16797609f4c0e7895248d6bce33252d25dd306cbe5d018"
+        }
+      },
+      "record_counts": {
+        "setup": 1,
+        "test": 9,
+        "benchmark": 30,
+        "profile": 30
+      },
+      "correctness_tests": [
+        {
+          "case": {
+            "m": 1,
+            "seed": 3250591218697746262,
+            "layer": "qkv_gate"
+          },
+          "event": "test",
+          "index": 0,
+          "status": "pass",
+          "message": "relative L2 error 2.028e-05 (worst row 2.028e-05)"
+        },
+        {
+          "case": {
+            "m": 7,
+            "seed": 3250743579380343232,
+            "layer": "pooler"
+          },
+          "event": "test",
+          "index": 1,
+          "status": "pass",
+          "message": "relative L2 error 1.366e-04 (worst row 1.905e-04)"
+        },
+        {
+          "case": {
+            "m": 33,
+            "seed": 3250895940062940203,
+            "layer": "o"
+          },
+          "event": "test",
+          "index": 2,
+          "status": "pass",
+          "message": "relative L2 error 5.383e-05 (worst row 1.975e-04); 3 probe rows exact to 0.0e+00"
+        },
+        {
+          "case": {
+            "m": 130,
+            "seed": 3251048300745537175,
+            "layer": "unpooler"
+          },
+          "event": "test",
+          "index": 3,
+          "status": "pass",
+          "message": "relative L2 error 1.279e-04 (worst row 3.037e-04); 22 probe rows exact to 0.0e+00"
+        },
+        {
+          "case": {
+            "m": 5,
+            "seed": 3251810104158522050,
+            "layer": "unpooler"
+          },
+          "event": "test",
+          "index": 4,
+          "status": "pass",
+          "message": "relative L2 error 1.115e-04 (worst row 2.408e-04); 1 probe rows exact to 0.0e+00"
+        },
+        {
+          "case": {
+            "m": 8,
+            "seed": 3251200661428134148,
+            "layer": "router"
+          },
+          "event": "test",
+          "index": 5,
+          "status": "pass",
+          "message": "relative L2 error 3.022e-07 (worst row 3.327e-07); 2 probe rows exact to 0.0e+00"
+        },
+        {
+          "case": {
+            "m": 9,
+            "dist": "outliers",
+            "seed": 3251353022110731122,
+            "layer": "router"
+          },
+          "event": "test",
+          "index": 6,
+          "status": "pass",
+          "message": "relative L2 error 2.819e-07 (worst row 3.024e-07); 3 probe rows exact to 0.0e+00"
+        },
+        {
+          "case": {
+            "m": 512,
+            "dist": "outliers",
+            "seed": 3251505382793328097,
+            "layer": "qkv_gate"
+          },
+          "event": "test",
+          "index": 7,
+          "status": "pass",
+          "message": "relative L2 error 2.076e-04 (worst row 5.655e-04); 64 probe rows exact to 0.0e+00"
+        },
+        {
+          "case": {
+            "m": 1000,
+            "dist": "outliers",
+            "seed": 3251657743475925073,
+            "layer": "unpooler"
+          },
+          "event": "test",
+          "index": 8,
+          "status": "pass",
+          "message": "relative L2 error 1.510e-04 (worst row 3.744e-04); 144 probe rows exact to 0.0e+00"
+        }
+      ]
+    },
+    {
+      "source": "probes/stream-comment/submission.py",
+      "source_sha256": "599300186306e756941d0a7ff9fb9ab56d40af7709c8048da02e53eefe72225d",
+      "submission_response": {
+        "job_id": "7481c7d25a774e92",
+        "flags": []
+      },
+      "job_id": "7481c7d25a774e92",
+      "status": "done",
+      "created_at": 1792718453.599714,
+      "finished_at": 1792718652.6931074,
+      "result": {
+        "gpu": "H200",
+        "passed": true,
+        "status": "ok",
+        "checks": {
+          "ok": true,
+          "flagged": [],
+          "rejected": []
+        },
+        "flags": [],
+        "error": null,
+        "returncode": 0,
+        "evaluator": {
+          "files": {
+            "harness/eval.py": "0051a1bfac67a9f1fad06086b306653c6643b2bb253e15a794aa672312f070a9",
+            "harness/runner.py": "c905e5c80264c6d27620b6fc7d55b162dccdb8ed7282f8a513a4d2e6f2f226f2",
+            "harness/worker.py": "950437610f57ddffbc1176b65d9c2ae909c47bf67b1e3fe0716a81946986f568",
+            "challenge/nvfp4.py": "cfdf37c7bc14b10f7353aba7d4632f4767401b92b4b073941a8030d9a961aaaf",
+            "challenge/checks.py": "9a046c3c38db28b325dcd1557baecdf6bc9ef941d2175f9a900ba4c230bb8055",
+            "harness/static_checks.py": "c5588b69e9e86229459a525c61b30096f6f13ff2add6cadf98f272c4ac8ca0c2",
+            "configs/muse-spark-open.yaml": "98f07230e4e64fe91b7c76d9a3ce04948053c043d494d5f1fae56cfe2de033af",
+            "problems/muse_bf16_proj/task.yml": "18e9da6357144b0a1348434a18bd2d1938b1948d9f2130876f6b6706588470c9",
+            "problems/muse_bf16_proj/baseline.py": "39f52ea5b65505958aa9dee9c8129dd394cbba4e670046f862b5a88ce91a0574",
+            "problems/muse_bf16_proj/reference.py": "e62491abc9ddcad33f5faba8b0ee74cf6370b7be5dd2dc05031742f3ebf7147d"
+          },
+          "image": "localhost:30500/kc/judge@sha256:9a7f287b80d772c6f636bbcb57422c619fe326e2aabc53803b85007bca93f68e",
+          "code_sha256": "986ed3ebb096eab83d16797609f4c0e7895248d6bce33252d25dd306cbe5d018"
+        }
+      },
+      "record_counts": {
+        "setup": 1,
+        "test": 9,
+        "benchmark": 30,
+        "profile": 30
+      },
+      "correctness_tests": [
+        {
+          "case": {
+            "m": 1,
+            "seed": 6206358988571342366,
+            "layer": "qkv_gate"
+          },
+          "event": "test",
+          "index": 0,
+          "status": "pass",
+          "message": "relative L2 error 2.600e-06 (worst row 2.600e-06)"
+        },
+        {
+          "case": {
+            "m": 7,
+            "seed": 6206538190849020092,
+            "layer": "pooler"
+          },
+          "event": "test",
+          "index": 1,
+          "status": "pass",
+          "message": "relative L2 error 9.073e-05 (worst row 1.415e-04)"
+        },
+        {
+          "case": {
+            "m": 33,
+            "seed": 6206717393126697819,
+            "layer": "o"
+          },
+          "event": "test",
+          "index": 2,
+          "status": "pass",
+          "message": "relative L2 error 4.385e-05 (worst row 1.187e-04); 3 probe rows exact to 0.0e+00"
+        },
+        {
+          "case": {
+            "m": 130,
+            "seed": 6206896595404375547,
+            "layer": "unpooler"
+          },
+          "event": "test",
+          "index": 3,
+          "status": "pass",
+          "message": "relative L2 error 1.440e-04 (worst row 3.805e-04); 20 probe rows exact to 0.0e+00"
+        },
+        {
+          "case": {
+            "m": 5,
+            "seed": 6207792606792764202,
+            "layer": "unpooler"
+          },
+          "event": "test",
+          "index": 4,
+          "status": "pass",
+          "message": "relative L2 error 1.386e-05 (worst row 3.211e-05); 1 probe rows exact to 0.0e+00"
+        },
+        {
+          "case": {
+            "m": 8,
+            "seed": 6207075797682053276,
+            "layer": "router"
+          },
+          "event": "test",
+          "index": 5,
+          "status": "pass",
+          "message": "relative L2 error 2.845e-07 (worst row 3.119e-07); 2 probe rows exact to 0.0e+00"
+        },
+        {
+          "case": {
+            "m": 9,
+            "dist": "outliers",
+            "seed": 6207254999959731006,
+            "layer": "router"
+          },
+          "event": "test",
+          "index": 6,
+          "status": "pass",
+          "message": "relative L2 error 2.965e-07 (worst row 3.162e-07); 1 probe rows exact to 0.0e+00"
+        },
+        {
+          "case": {
+            "m": 512,
+            "dist": "outliers",
+            "seed": 6207434202237408737,
+            "layer": "qkv_gate"
+          },
+          "event": "test",
+          "index": 7,
+          "status": "pass",
+          "message": "relative L2 error 2.230e-04 (worst row 5.382e-04); 79 probe rows exact to 0.0e+00"
+        },
+        {
+          "case": {
+            "m": 1000,
+            "dist": "outliers",
+            "seed": 6207613404515086469,
+            "layer": "unpooler"
+          },
+          "event": "test",
+          "index": 8,
+          "status": "pass",
+          "message": "relative L2 error 1.457e-04 (worst row 3.846e-04); 124 probe rows exact to 0.0e+00"
+        }
+      ]
+    }
+  ]
+}

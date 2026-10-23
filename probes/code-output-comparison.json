@@ -1,0 +1,321 @@
+{
+  "repositories": {
+    "kernelbot": "ec4669669d368c395675565831f98b509db2b0b3",
+    "kernelboard": "3bf87b6754b59a5002f145e93df9005fa9eb6c4c",
+    "reference-kernels": "f3295bb6bd559bae4659d2d8fc45edb1394251b1",
+    "popcorn-cli": "036b3ead604f1e9f404cbee5cf0e48377ef0766f",
+    "pygpubench": "286841bf973450f5d426198f744c3a12defe7b07"
+  },
+  "scope": "All 23 Python files exposed by the five OKC problem APIs, compared against pinned GPU MODE Python snapshots. No access to OKC private server source.",
+  "target_files": 23,
+  "target_unique_sha256": 14,
+  "source_files": 422,
+  "source_files_tokenized": 421,
+  "tokenization_errors": [
+    {
+      "path": "popcorn-cli-036b3ead604f1e9f404cbee5cf0e48377ef0766f/docs/AMD_workshop/load_inline_sample.py",
+      "error": "('EOF in multi-line statement', (28, 0))"
+    }
+  ],
+  "exact": {
+    "minimum_tokens": 25,
+    "method": "Ignore whitespace, indentation and comments; retain names and literals.",
+    "matches": []
+  },
+  "normalized": {
+    "minimum_tokens": 40,
+    "method": "Additionally replace non-keyword names except common builtins, library names and attribute names; retain literals.",
+    "matches": []
+  },
+  "output": {
+    "okc_job_id": "a3a182d805244352",
+    "field_mapping": {
+      "runs": "runs",
+      "mean": "mean_ns",
+      "std": "std_ns",
+      "err": "err_ns",
+      "best": "best_ns",
+      "worst": "worst_ns"
+    },
+    "okc_first_benchmark": {
+      "event": "benchmark",
+      "index": 0,
+      "runs": 60,
+      "mean_ns": 18094.400006035965,
+      "std_ns": 543.2314028223426,
+      "err_ns": 70.13087254226085,
+      "best_ns": 17216.000705957413,
+      "worst_ns": 19775.9997099638,
+      "median_ns": 14110.392286697333,
+      "parent_ns": 21215.98902158439,
+      "outside_ns": 17147.96629213483,
+      "paired_ratio": 1.0035156712940503
+    },
+    "kernelbot_envelope": "FullResult.runs[mode].run.result with flattened test.i.* and benchmark.i.* keys",
+    "okc_envelope": "Job.result.records array with event, index, case, status and metric fields",
+    "interpretation": "Matching conventional summary-statistic names and formulas; distinct surrounding record format. Not a unique source-code fingerprint.",
+    "arithmetic_max_deltas_ns": {
+      "mean_delta_ns": 0.000227880482270848,
+      "sample_std_delta_ns": 0.00022228714703942387,
+      "sem_delta_ns": 0.0
+    },
+    "reference_stats_source": "https://github.com/gpu-mode/reference-kernels/blob/f3295bb6bd559bae4659d2d8fc45edb1394251b1/problems/pmpp_v2/eval.py#L95",
+    "kernelbot_report_source": "https://github.com/gpu-mode/kernelbot/blob/ec4669669d368c395675565831f98b509db2b0b3/src/libkernelbot/report.py#L241",
+    "profile_comparison": {
+      "okc": "kernel                                                           GPU time  share  calls\nnvjet_sm90_tst_128x8_64x12_4x1_v_bz_splitK_TNT                     9.7 \u00b5s  84.9%      1\nvoid cublasLt::splitKreduce_kernel<32, 16, int, float, __...       1.7 \u00b5s  15.1%      1\ntotal                                                             11.4 \u00b5s",
+      "gpu_mode": "reference-kernels uses torch.profiler key_averages().table(sort_by=\"self_cuda_time_total\", row_limit=20); serializes report as base64 in benchmark.i.report. OKC returns a custom plain-text GPU-time/share/calls table in JSON profile events.",
+      "source": "https://github.com/gpu-mode/reference-kernels/blob/f3295bb6bd559bae4659d2d8fc45edb1394251b1/problems/nvidia/eval.py#L345"
+    },
+    "median_comparison": {
+      "source": "https://github.com/gpu-mode/pygpubench/blob/286841bf973450f5d426198f744c3a12defe7b07/python/pygpubench/__init__.py#L148",
+      "method": "Compare OKC median_raw_ns with the average of the two middle returned runs_ns samples, and with pygpubench basic_stats upper-middle selection. Allow 0.1 ns for returned-sample rounding.",
+      "distinguishable_cases": 16,
+      "okc_average_middle_matches": 16,
+      "okc_upper_middle_matches": 0,
+      "observations": [
+        {
+          "job": "a3a182d805244352",
+          "index": 3,
+          "reported_median_raw_ns": 11152.000166475773,
+          "ordinary_median_ns": 11152.0,
+          "upper_middle_ns": 11168,
+          "matches_ordinary": true,
+          "matches_upper": false
+        },
+        {
+          "job": "a3a182d805244352",
+          "index": 4,
+          "reported_median_raw_ns": 14448.000118136406,
+          "ordinary_median_ns": 14448.0,
+          "upper_middle_ns": 14464,
+          "matches_ordinary": true,
+          "matches_upper": false
+        },
+        {
+          "job": "a3a182d805244352",
+          "index": 7,
+          "reported_median_raw_ns": 25615.999475121498,
+          "ordinary_median_ns": 25616.0,
+          "upper_middle_ns": 25632,
+          "matches_ordinary": true,
+          "matches_upper": false
+        },
+        {
+          "job": "a3a182d805244352",
+          "index": 10,
+          "reported_median_raw_ns": 18063.999712467194,
+          "ordinary_median_ns": 18064.0,
+          "upper_middle_ns": 18080,
+          "matches_ordinary": true,
+          "matches_upper": false
+        },
+        {
+          "job": "a3a182d805244352",
+          "index": 12,
+          "reported_median_raw_ns": 26000.000536441803,
+          "ordinary_median_ns": 26000.0,
+          "upper_middle_ns": 26016,
+          "matches_ordinary": true,
+          "matches_upper": false
+        },
+        {
+          "job": "a3a182d805244352",
+          "index": 22,
+          "reported_median_raw_ns": 28591.999784111977,
+          "ordinary_median_ns": 28592.0,
+          "upper_middle_ns": 28608,
+          "matches_ordinary": true,
+          "matches_upper": false
+        },
+        {
+          "job": "a3a182d805244352",
+          "index": 23,
+          "reported_median_raw_ns": 24079.99988645315,
+          "ordinary_median_ns": 24080.0,
+          "upper_middle_ns": 24096,
+          "matches_ordinary": true,
+          "matches_upper": false
+        },
+        {
+          "job": "a3a182d805244352",
+          "index": 27,
+          "reported_median_raw_ns": 34512.000158429146,
+          "ordinary_median_ns": 34512.0,
+          "upper_middle_ns": 34560,
+          "matches_ordinary": true,
+          "matches_upper": false
+        },
+        {
+          "job": "7481c7d25a774e92",
+          "index": 0,
+          "reported_median_raw_ns": 18128.00019979477,
+          "ordinary_median_ns": 18128.0,
+          "upper_middle_ns": 18144,
+          "matches_ordinary": true,
+          "matches_upper": false
+        },
+        {
+          "job": "7481c7d25a774e92",
+          "index": 2,
+          "reported_median_raw_ns": 24879.999458789825,
+          "ordinary_median_ns": 24880.0,
+          "upper_middle_ns": 24896,
+          "matches_ordinary": true,
+          "matches_upper": false
+        },
+        {
+          "job": "7481c7d25a774e92",
+          "index": 5,
+          "reported_median_raw_ns": 18063.999712467194,
+          "ordinary_median_ns": 18064.0,
+          "upper_middle_ns": 18080,
+          "matches_ordinary": true,
+          "matches_upper": false
+        },
+        {
+          "job": "7481c7d25a774e92",
+          "index": 7,
+          "reported_median_raw_ns": 25103.99930179119,
+          "ordinary_median_ns": 25104.0,
+          "upper_middle_ns": 25120,
+          "matches_ordinary": true,
+          "matches_upper": false
+        },
+        {
+          "job": "7481c7d25a774e92",
+          "index": 13,
+          "reported_median_raw_ns": 22703.999653458595,
+          "ordinary_median_ns": 22704.0,
+          "upper_middle_ns": 22720,
+          "matches_ordinary": true,
+          "matches_upper": false
+        },
+        {
+          "job": "7481c7d25a774e92",
+          "index": 22,
+          "reported_median_raw_ns": 29519.999399781227,
+          "ordinary_median_ns": 29520.0,
+          "upper_middle_ns": 29536,
+          "matches_ordinary": true,
+          "matches_upper": false
+        },
+        {
+          "job": "7481c7d25a774e92",
+          "index": 24,
+          "reported_median_raw_ns": 33199.99948143959,
+          "ordinary_median_ns": 33200.0,
+          "upper_middle_ns": 33216,
+          "matches_ordinary": true,
+          "matches_upper": false
+        },
+        {
+          "job": "7481c7d25a774e92",
+          "index": 27,
+          "reported_median_raw_ns": 32912.0010137558,
+          "ordinary_median_ns": 32912.0,
+          "upper_middle_ns": 32928,
+          "matches_ordinary": true,
+          "matches_upper": false
+        }
+      ],
+      "limit": "This distinguishes these published summary helpers; it cannot establish which libraries are used elsewhere in the private evaluator."
+    }
+  },
+  "pygpubench_review": {
+    "source": "https://github.com/gpu-mode/pygpubench/tree/286841bf973450f5d426198f744c3a12defe7b07/exploits",
+    "review": "Offline source review only; exploit suite was not executed against OKC.",
+    "categories": [
+      "Python object tampering",
+      "native memory tampering",
+      "result channel forgery",
+      "process and filesystem isolation",
+      "GPU timing and output tampering"
+    ],
+    "okc_observation": "Static rejection of harness-frame inspection; normal results expose Python harness file hashes. Neither proves that OKC uses pygpubench or shares its implementation."
+  },
+  "short_exact_match": {
+    "tokens": 23,
+    "example": ") -> tuple[bool, str]: if not isinstance(output, torch.Tensor): return False,",
+    "okc": "checks.py:31",
+    "gpu_mode": "reference-kernels/problems/linalg/cholesky_py/reference.py:137",
+    "assessment": "Common return annotation and tensor type guard; insufficiently distinctive to attribute copying."
+  },
+  "structural_scan": {
+    "method": "Function-level AST token comparison using normalized longest common subsequence length. Normalize variable/function/argument names and strings; remove annotations, decorators and docstrings; preserve operators, attribute names and numeric constants. Functions must span at least 9 lines and 160 AST tokens. For each distinct OKC function, compare 20 candidates ranked by token-multiset overlap. This is a heuristic candidate search, not exhaustive semantic equivalence or an authorship detector.",
+    "unique_okc_functions": 49,
+    "unique_gpu_mode_functions": 897,
+    "parse_errors": [
+      {
+        "path": "reference-kernels-f3295bb6bd559bae4659d2d8fc45edb1394251b1/problems/helion/template.py",
+        "error": "invalid syntax (<unknown>, line 17)"
+      },
+      {
+        "path": "popcorn-cli-036b3ead604f1e9f404cbee5cf0e48377ef0766f/docs/AMD_workshop/load_inline_sample.py",
+        "error": "'(' was never closed (<unknown>, line 19)"
+      }
+    ],
+    "manual_review": "The four highest-ranked candidates perform different operations: performance-floor estimation vs identity-matrix generation; router-weight generation vs sorting-input generation; MoE evaluation vs triangular multiplication; outlier-channel scaling vs vector reduction. Shared AST syntax and common tensor operations do not support attribution of copying.",
+    "reviewed_candidates": [
+      {
+        "similarity": 0.7724,
+        "okc": {
+          "path": "okc-problems/muse_moe_w4a16/reference.py",
+          "function": "speed_of_light_ns",
+          "line": 125,
+          "end_line": 136
+        },
+        "gpu_mode": {
+          "path": "reference-kernels-f3295bb6bd559bae4659d2d8fc45edb1394251b1/problems/linalg/eigh_py/submissions/triton_diagonal_fast_path.py",
+          "function": "_write_permuted_eye_kernel",
+          "line": 8,
+          "end_line": 24
+        }
+      },
+      {
+        "similarity": 0.7698,
+        "okc": {
+          "path": "okc-problems/muse_decode_layer/reference.py",
+          "function": "_router",
+          "line": 140,
+          "end_line": 148
+        },
+        "gpu_mode": {
+          "path": "reference-kernels-f3295bb6bd559bae4659d2d8fc45edb1394251b1/problems/pmpp/sort_py/reference.py",
+          "function": "generate_input",
+          "line": 17,
+          "end_line": 44
+        }
+      },
+      {
+        "similarity": 0.7596,
+        "okc": {
+          "path": "okc-problems/muse_moe_w4a16/template.py",
+          "function": "kernel_fn",
+          "line": 53,
+          "end_line": 71
+        },
+        "gpu_mode": {
+          "path": "reference-kernels-f3295bb6bd559bae4659d2d8fc45edb1394251b1/problems/bioml/trimul/submission.py",
+          "function": "forward",
+          "line": 25,
+          "end_line": 67
+        }
+      },
+      {
+        "similarity": 0.7537,
+        "okc": {
+          "path": "okc-problems/muse_decode_layer/nvfp4.py",
+          "function": "outlier_channels",
+          "line": 131,
+          "end_line": 140
+        },
+        "gpu_mode": {
+          "path": "reference-kernels-f3295bb6bd559bae4659d2d8fc45edb1394251b1/problems/pmpp/vectorsum_py/submission.py",
+          "function": "sum_kernel",
+          "line": 10,
+          "end_line": 32
+        }
+      }
+    ]
+  }
+}
